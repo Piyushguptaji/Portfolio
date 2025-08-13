@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush | Portfolio</title>
+    <!-- Google Fonts for a modern, cool look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles & Dark Theme Setup */
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --highlight-color: #58a6ff;
+            --accent-color: #238636;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --star-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Starry Background Animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--bg-color);
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--star-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 25px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        .navbar-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: var(--highlight-color);
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title.gradient {
+            background: linear-gradient(45deg, #6c63ff, #00d2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title.gradient::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #6c63ff, #00d2ff);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid #30363d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+            border-color: var(--highlight-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-title.gradient {
+            background: linear-gradient(45deg, #e05cff, #58a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #929292;
+            margin-bottom: 25px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.4);
+        }
+
+        /* About Section */
+        #about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #about-text {
+            flex: 1;
+            font-size: 1.1rem;
+        }
+        
+        #about-skills-cards {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .about-skill-card h3 {
+            font-size: 1.2rem;
+            color: var(--highlight-color);
+            margin-bottom: 10px;
+        }
+        
+        .about-skill-card i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        /* Skills Section */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background-color: #21252d;
+            border: 1px solid #3e424a;
+            border-radius: 8px;
+        }
+        
+        .skill-card:hover {
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(88, 166, 255, 0.3);
+        }
+
+        /* Projects Section */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--highlight-color);
+            margin-bottom: 5px;
+        }
+
+        .project-card h4 {
+            color: #929292;
+            margin-bottom: 15px;
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            color: #d8d8e0;
+        }
+        
+        .project-card ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+            gap: 10px;
+        }
+        
+        .project-card ul li {
+            background-color: #21252d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info-card {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .contact-info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--highlight-color);
+            margin-right: 20px;
+        }
+        
+        .contact-info-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--highlight-color);
+        }
+
+        .contact-form-card {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .contact-form-card input,
+        .contact-form-card textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #21252d;
+            border: 1px solid #3e424a;
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form-card input:focus,
+        .contact-form-card textarea:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            background: linear-gradient(45deg, #e05cff, #58a6ff);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #30363d;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #about-container {
+                flex-direction: column;
+            }
+            .contact-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+            .navbar-links {
+                margin-top: 15px;
+            }
+            .navbar-links a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Starry Background -->
+    <div class="stars"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar container">
+        <a href="#hero" class="navbar-brand">Piyush's Portfolio</a>
+        <div class="navbar-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header id="hero" class="section">
+            <h1 class="hero-title">Hi, I'm <span class="hero-title gradient">Piyush Gupta</span></h1>
+            <p class="hero-subtitle">CSE undergraduate</p>
+            <p class="hero-description">
+                I'm passionate about crafting intelligent, full-stack solutions at the intersection of hardware and AI. I specialize in building scalable web apps and ML-driven systems that solve real-world problems with elegance and efficiency. Always learning, always building — ready to bring innovation, speed, and smart thinking to your next big challenge.
+            </p>
+            <a href="#projects" class="hero-btn">View My Work</a>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title gradient">About Me</h2>
+            <div id="about-container">
+                <div id="about-text">
+                    <p class="card">
+                        I am a motivated and passionate Computer Science graduate with hands-on experience in machine learning and generative AI. Proficient in Python, I have worked extensively with LangChain, OpenAI APIs, and AI agents, developing intelligent applications to solve real-world problems. I have also guided and managed interns, contributing to project planning and technical mentoring. I'm eager to join innovative teams where I can continue building impactful, AI-driven solutions.
+                    </p>
+                </div>
+                <div id="about-skills-cards" class="card">
+                    <div class="about-skill-card">
+                        <h3><i class="fas fa-code"></i>Web Development</h3>
+                        <p>Creating Responsive Websites and Web Applications with modern Frameworks</p>
+                    </div>
+                    <div class="about-skill-card">
+                        <h3><i class="fas fa-palette"></i>UI/UX Design</h3>
+                        <p>Design intuitive user interfaces and seamless user experiences.</p>
+                    </div>
+                    <div class="about-skill-card">
+                        <h3><i class="fas fa-tasks"></i>Project Management</h3>
+                        <p>Leading Projects from conception to complete with agile methodologies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title gradient">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">Python</div>
+                <div class="skill-card">TensorFlow</div>
+                <div class="skill-card">NLP</div>
+                <div class="skill-card">LLM</div>
+                <div class="skill-card">Machine Learning</div>
+                <div class="skill-card">Deep Learning</div>
+                <div class="skill-card">Git/GitHub</div>
+                <div class="skill-card">HTML/CSS</div>
+                <div class="skill-card">C++</div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title gradient">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: ML in Cryptanalysis -->
+                <div class="card project-card animated-gradient-border">
+                    <h3>ML in Cryptanalysis</h3>
+                    <h4>Python, Genetic Algorithm, NLP</h4>
+                    <p>
+                        Our goal was to improve the efficiency and accuracy of cryptanalysis, specifically in deciphering historical ciphers. We used a Genetic Algorithm (GA) and a character-level language model to optimize the key-searching process.
+                    </p>
+                    <ul>
+                        <li>Python</li>
+                        <li>NLP</li>
+                        <li>GA</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2: Library Management System -->
+                <div class="card project-card animated-gradient-border">
+                    <h3>Library Management System</h3>
+                    <h4>C++, Object-Oriented Programming</h4>
+                    <p>
+                        Developed a comprehensive Library Management System in C++, incorporating features such as efficient book cataloging, user management, and real-time inventory tracking. Utilized object-oriented programming principles for code modularity and scalability.
+                    </p>
+                    <ul>
+                        <li>C++</li>
+                        <li>OOP</li>
+                        <li>Data Structures</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="hero-btn">Check My GitHub →</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title gradient">Get In Touch</h2>
+            <p style="text-align: center; max-width: 700px; margin: -20px auto 40px;">Have a Project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new opportunities.</p>
+
+            <div class="contact-container">
+                <div class="contact-info-card card animated-gradient-border">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>Email</p>
+                            <a href="mailto:piyushworkgupta@gmail.com">piyushworkgupta@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>Phone</p>
+                            <a href="tel:9625709494">9625709494</a>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <h3>Connect With Me</h3>
+                        <div class="social-links" style="margin-top: 15px;">
+                            <a href="https://www.linkedin.com/in/piyush-gupta-your-id" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Piyush-Gupta-your-id" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="mailto:piyushworkgupta@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-card card animated-gradient-border">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Piyush Gupta. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Starry background animation
+        const starsContainer = document.querySelector('.stars');
+        const numStars = 100;
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3;
+            star.style.width = ${size}px;
+            star.style.height = ${size}px;
+            star.style.top = ${Math.random() * 100}%;
+            star.style.left = ${Math.random() * 100}%;
+            star.style.animationDelay = ${Math.random() * 5}s;
+            star.style.setProperty('--duration', ${Math.random() * 10 + 5}s);
+            starsContainer.appendChild(star);
+        }
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            observer.observe(section);
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .hidden {
+                opacity: 0;
+                transform: translateY(50px);
+                transition: opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1), transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            .in-view {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
